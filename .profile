@@ -24,8 +24,8 @@ reprof () {
 }
 
 # Git bash profile
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  . "$(brew --prefix)/etc/bash_completion"
 fi
 
 # Git commands
@@ -53,7 +53,4 @@ gob () {
 # General shortcuts
 
 # Long ls is long
-la () {
-  ls -lah "$1"
-}
-
+alias la="ls -lah"
