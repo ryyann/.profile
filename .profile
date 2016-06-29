@@ -35,11 +35,7 @@ alias gs="git status"
 alias gh="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 gcm () {
-  local messsage=""
-  for (( i = 0; i < $#; i++ )); do
-    message="$message $i"
-  done
-  git commit -m "$message"
+  git commit -m "$*"
 }
 
 gpoc () {
