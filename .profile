@@ -37,7 +37,7 @@ alias gh="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 gcm () {
   local messsage=""
   for (( i = 0; i < $#; i++ )); do
-    message="$message ${i}"
+    message="$message $i"
   done
   git commit -m "$message"
 }
