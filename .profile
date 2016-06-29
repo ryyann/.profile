@@ -39,7 +39,7 @@ gcm () {
 }
 
 gpoc () {
-  git push origin "$(git rev-parse --abrev -ref HEAD)"
+  git push origin "$(git rev-parse --abbrev-ref HEAD)"
 }
 
 go () {
