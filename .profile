@@ -14,6 +14,14 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+# Pin Entry
+if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
+  source ~/.gnupg/.gpg-agent-info
+  export GPG_AGENT_INFO
+else
+  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
+
 # Profile commands
 prof () {
   vim ~/.profile
@@ -39,7 +47,12 @@ gcm () {
 }
 
 gpoc () {
-  git push origin "$(git rev-parse --abbrev-ref HEAD)"
+  branch="$(git rev-parse --abbrev-ref HEAD)"
+  if [ "$1" ]; then
+    git push origin "$1" "$branch"
+  else
+    git push origin "$branch"
+  fi
 }
 
 go () {
@@ -49,6 +62,10 @@ go () {
 gob () {
   git checkout -b "$1"
 }
+
+# npm commands
+alias ni="npm install"
+alias nr="npm run"
 
 # General shortcuts
 
